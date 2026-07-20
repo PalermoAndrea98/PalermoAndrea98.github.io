@@ -209,6 +209,23 @@
     else el.textContent = value;
   }
 
+  var carouselAreas = []; // {el, it} — carousel area labels, translated live
+
+  // Set one element to its English (override → cache → fetch) or Italian text.
+  function localize(el, key, src, isEN, token) {
+    if (!isEN) { setEl(el, src); return; }
+    if (key && OVERRIDES[key] != null) { setEl(el, OVERRIDES[key]); return; }
+    if (!src) return;
+    if (cache[src] != null) { setEl(el, cache[src]); return; }
+    setEl(el, src); // keep Italian while fetching
+    translate(src).then(function (en) {
+      if (!en) return;
+      cache[src] = en;
+      saveCacheSoon();
+      if (token === applyToken) setEl(el, en); // still current, not superseded
+    }).catch(function () { /* leave Italian on failure */ });
+  }
+
   function applyLang(lang) {
     var isEN = lang === "en";
     var token = ++applyToken;
@@ -222,22 +239,9 @@
 
     i18nEls.forEach(function (el) {
       var key = el.getAttribute("data-i18n");
-      var src = IT[key];
-
-      if (!isEN) { setEl(el, src); return; }              // back to Italian
-      if (OVERRIDES[key] != null) { setEl(el, OVERRIDES[key]); return; }
-      if (!src) return;
-      if (cache[src] != null) { setEl(el, cache[src]); return; }
-
-      // Not translated yet: keep Italian, fetch, then swap in.
-      setEl(el, src);
-      translate(src).then(function (en) {
-        if (!en) return;
-        cache[src] = en;
-        saveCacheSoon();
-        if (token === applyToken) setEl(el, en); // still on English, not superseded
-      }).catch(function () { /* leave Italian on failure */ });
+      localize(el, key, IT[key], isEN, token);
     });
+    carouselAreas.forEach(function (a) { localize(a.el, null, a.it, isEN, token); });
   }
 
   var saved;
@@ -251,4 +255,75 @@
     var current = document.documentElement.getAttribute("lang");
     applyLang(current === "en" ? "it" : "en");
   });
+
+  /* ==========================================================
+     Case-studies carousel — content lives in cases.csv
+     (2 columns: Azienda, Area). Edit that file to maintain it.
+     ========================================================== */
+  (function () {
+    var track = document.getElementById("casesTrack");
+    if (!track || !window.fetch) return;
+
+    fetch("cases.csv", { cache: "no-cache" })
+      .then(function (r) { if (!r.ok) throw new Error("csv"); return r.text(); })
+      .then(function (text) {
+        var rows = parseCsv(text);
+        if (rows.length) build(rows);
+      })
+      .catch(function () { /* leave carousel empty if the file can't be read */ });
+
+    function unquote(s) {
+      if (s.length >= 2 && s.charAt(0) === '"' && s.charAt(s.length - 1) === '"') {
+        return s.slice(1, -1).replace(/""/g, '"');
+      }
+      return s;
+    }
+
+    function parseCsv(text) {
+      var lines = text.split(/\r?\n/);
+      var out = [];
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (!line) continue;
+        if (i === 0 && /azienda/i.test(line)) continue; // skip header row
+        var c = line.indexOf(",");                       // split on first comma only
+        if (c === -1) continue;
+        var company = unquote(line.slice(0, c).trim());
+        var area = unquote(line.slice(c + 1).trim());
+        if (company) out.push([company, area]);
+      }
+      return out;
+    }
+
+    function makeItem(company, area, ghost) {
+      var item = document.createElement("div");
+      item.className = "carousel__item";
+      if (ghost) item.setAttribute("aria-hidden", "true");
+      var co = document.createElement("span");
+      co.className = "carousel__co";
+      co.textContent = company;
+      item.appendChild(co);
+      if (area) {
+        var ar = document.createElement("span");
+        ar.className = "carousel__area";
+        item.appendChild(ar);
+        carouselAreas.push({ el: ar, it: area });
+      }
+      return item;
+    }
+
+    function build(rows) {
+      var frag = document.createDocumentFragment();
+      // Two identical copies → seamless translateX(-50%) loop.
+      for (var copy = 0; copy < 2; copy++) {
+        for (var i = 0; i < rows.length; i++) {
+          frag.appendChild(makeItem(rows[i][0], rows[i][1], copy === 1));
+        }
+      }
+      track.appendChild(frag);
+      // Localize the freshly built area labels to the active language.
+      var isEN = document.documentElement.getAttribute("lang") === "en";
+      carouselAreas.forEach(function (a) { localize(a.el, null, a.it, isEN, applyToken); });
+    }
+  })();
 })();

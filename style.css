@@ -244,24 +244,40 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .timeline__org { color: var(--text); font-weight: 600; font-size: .95rem; margin: .1rem 0 .5rem; }
 .timeline__desc { color: var(--text-soft); font-size: .95rem; }
 
-/* ---------- Case studies ---------- */
-.cases { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--gap); }
-.case {
-  position: relative; background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 1.9rem; overflow: hidden;
-  transition: transform .31s ease, border-color .31s ease;
+/* ---------- Case studies — moving carousel ---------- */
+.carousel {
+  overflow: hidden; width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
-.case::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); opacity: 0; transition: opacity .31s ease; }
-.case:hover { transform: translateY(-4px); border-color: var(--border-2); }
-.case:hover::before { opacity: 1; }
-.case__tag {
-  display: inline-block; font-family: var(--font-head); font-size: .72rem; font-weight: 600;
-  letter-spacing: .08em; text-transform: uppercase; color: var(--accent-2);
-  background: rgba(56,189,248,.1); border: 1px solid rgba(56,189,248,.2);
-  padding: .3rem .7rem; border-radius: 999px; margin-bottom: 1rem;
+.carousel__track {
+  display: flex; width: max-content;
+  animation: carousel-scroll 45s linear infinite;
 }
-.case h3 { font-size: 1.3rem; margin-bottom: .7rem; }
-.case p { color: var(--text-soft); font-size: .95rem; }
+.carousel:hover .carousel__track,
+.carousel:focus-within .carousel__track { animation-play-state: paused; }
+
+@keyframes carousel-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.carousel__item {
+  flex: 0 0 auto; min-width: 210px; margin-right: 1.25rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.4rem 1.7rem; transition: border-color .31s ease, background .31s ease;
+}
+.carousel__item:hover { border-color: var(--border-2); background: var(--surface-2); }
+.carousel__co { font-family: var(--font-head); font-weight: 600; font-size: 1.2rem; color: var(--text); }
+.carousel__area {
+  display: block; margin-top: .3rem; font-size: .82rem; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--accent-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel { overflow-x: auto; }
+  .carousel__track { animation: none; }
+}
 
 /* ---------- Skills ---------- */
 .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--gap); }
