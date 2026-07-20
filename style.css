@@ -105,12 +105,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .nav__actions { display: flex; align-items: center; gap: .7rem; }
 .nav__brand { display: flex; align-items: center; gap: .6rem; font-family: var(--font-head); font-weight: 600; }
-.nav__mark {
-  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: var(--accent-ink); font-weight: 700; font-size: .82rem; letter-spacing: .02em;
-}
 .nav__name { font-size: 1.02rem; }
+.brand-logo { height: 36px; width: auto; display: block; object-fit: contain; }
+.footer__brand .brand-logo { height: 30px; }
 .nav__links { display: flex; align-items: center; gap: .35rem; }
 .nav__links a { padding: .5rem .85rem; border-radius: 999px; color: var(--text-soft); font-size: .93rem; font-weight: 500; transition: color .2s ease, background .2s ease; }
 .nav__links a:hover { color: var(--text); background: var(--surface); }
@@ -200,9 +197,17 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); text-align: center;
 }
 .about__avatar {
-  width: 76px; height: 76px; margin: 0 auto 1rem; display: grid; place-items: center;
-  border-radius: 20px; font-family: var(--font-head); font-weight: 700; font-size: 1.6rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: var(--accent-ink);
+  width: 88px; height: 88px; margin: 0 auto 1.1rem; display: grid; place-items: center;
+  border-radius: 24px; border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(135deg, var(--accent), var(--accent-2)) border-box;
+  box-shadow: 0 16px 32px -18px rgba(79, 209, 197, .55);
+}
+.about__avatar span {
+  font-family: var(--font-head); font-weight: 700; font-size: 2.3rem; letter-spacing: -.02em;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .about__role { font-family: var(--font-head); font-weight: 600; font-size: 1.2rem; }
 .about__sub { color: var(--text-mut); font-size: .92rem; margin-bottom: 1.4rem; }
