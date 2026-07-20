@@ -60,8 +60,19 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   /* ==========================================================
-     Internationalization (IT default in HTML, EN dictionary here)
+     Internationalization — Italian is written in the HTML.
+     English is produced AUTOMATICALLY by machine translation
+     and cached in the browser, keyed by the Italian source text
+     (so editing the Italian re-translates it on its own).
+
+     You normally never touch this file. Two exceptions:
+       • OVERRIDES below — hand-picked English for short labels
+         (nav, buttons, dates) where you want an exact wording.
+         Keyed by the element's data-i18n value.
+       • Clear a bad cached translation: in the browser console run
+         localStorage.removeItem("ap-tr-it-en"); then reload.
      ========================================================== */
+
   var FLAGS = {
     it: '<svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="1" height="2" x="0" fill="#008C45"/><rect width="1" height="2" x="1" fill="#F4F5F0"/><rect width="1" height="2" x="2" fill="#CD212A"/></svg>',
     gb: '<svg viewBox="0 0 60 30" preserveAspectRatio="none">' +
@@ -75,11 +86,11 @@
         '</g></svg>'
   };
 
-  /* English strings, keyed to data-i18n attributes. HTML holds the Italian. */
-  var EN = {
-    "meta.title": "Andrea Palermo — Logistics Consulting & Project Management",
-    "meta.description": "Andrea Palermo — logistics/IT project manager and process engineer. Process analysis, warehouse optimization, WMS/ERP integration and logistics automation for multinational key accounts.",
+  /* Hand-picked English for short/stable labels. Everything NOT listed
+     here is translated automatically from the Italian in index.html. */
+  var OVERRIDES = {
     "skip": "Skip to content",
+    "meta.title": "Andrea Palermo — Logistics Consulting & Project Management",
 
     "nav.about": "About",
     "nav.services": "Services",
@@ -88,133 +99,120 @@
     "nav.skills": "Skills",
     "nav.contact": "Contact",
 
-    "hero.eyebrow": "Logistics Project Manager &middot; IT &middot; Process Engineer",
-    "hero.title": 'I turn complex logistics processes into <span class="hero__accent">efficient architectures.</span>',
-    "hero.lead": "Process analysis, warehouse optimization and integrated logistics, with a strong focus on mapping physical flows and translating them into scalable IT solutions for multinational key accounts.",
-    "hero.cta": "Let's talk about your project",
     "hero.cv": "Download CV",
-    "hero.stat1": "Years in integrated logistics",
-    "hero.stat2": "Multinational key accounts",
-    "hero.stat3": "sqm of warehouse managed",
+    "hero.stat3.v": "2.5M/yr",
 
     "about.eyebrow": "About",
-    "about.title": "From the warehouse floor to process governance.",
-    "about.p1": "I'm a logistics and IT project manager with a career built from the ground up: I started as a hybrid warehouse operator and data-entry clerk and, thanks to the trust I built with management, moved through every stage of the value chain — stock control, application development, invoicing, project management, launching a startup, key-client and supplier management — up to the role of PM with full decision-making autonomy.",
-    "about.p2": "This path lets me speak the language of those working in the warehouse and of those designing the IT systems, bridging the gap between the physical flow and its digital representation. My approach is pragmatic and focused on solving operational problems.",
-    "about.hl1": '<span class="about__hl-title">Selected network</span> A network of partners and suppliers enabling favourable rates and preferential logistics services.',
-    "about.hl2": '<span class="about__hl-title">End-to-end automation</span> Design of IT interfaces for full logistics and e-commerce automation.',
-    "about.hl3": '<span class="about__hl-title">Cross-cutting view</span> Experience across many product categories and the operational constraints each one brings.',
-    "about.card.sub": "PM / Consultant / Process Engineer",
-    "about.fact1.k": "Company",
-    "about.fact2.k": "Since",
-    "about.fact2.v": "November 2019",
-    "about.fact3.k": "Focus",
-    "about.fact3.v": "Integrated logistics &amp; IT",
-    "about.fact4.k": "Languages",
-    "about.fact4.v": "Italian, English (C1 &middot; EF SET)",
     "about.card.cta": "Contact me",
+    "about.fact2.v": "November 2019",
 
     "services.eyebrow": "Services",
-    "services.title": "How I can add value.",
-    "services.intro": "Consulting support that starts from the analysis of the physical process and reaches the IT solution, with the constant goal of cutting costs and increasing operational efficiency.",
-    "svc1.t": "Process Mapping & Reengineering",
-    "svc1.d": "Mapping of physical flows, time-and-motion analysis and process redesign to remove waste and bottlenecks.",
-    "svc2.t": "WMS & ERP Integration",
-    "svc2.d": "Interfacing between systems (SAP, AS400/IBM, Oracle) and e-commerce platforms via API and FTP/SFTP, for continuous and reliable data exchange.",
-    "svc3.t": "Data Analysis & Business Intelligence",
-    "svc3.d": "From historical data to decisions: analysis with SQL, Python and Power BI to make metrics and statistics available in real time.",
-    "svc4.t": "Inventory Management",
-    "svc4.d": "Management of batches, expiry dates and FEFO/FIFO logic, with accurate stock control even for critical categories such as food and medical.",
-    "svc5.t": "KPI, SLA & ROI",
-    "svc5.d": "Definition and monitoring of KPIs and SLAs, ROI calculation and cost control for strategic, scalable governance.",
-    "svc6.t": "Project Management",
-    "svc6.d": "Running projects with Agile, Waterfall, Hybrid and Prince2 methodologies, coordinating cross-functional teams from budget to go-live.",
 
     "exp.eyebrow": "Experience & Education",
-    "exp.title": "A fast-rising career path.",
     "exp1.p": "Nov 2019 — Present",
-    "exp1.r": "PM / Consultant / Process Engineer",
-    "exp1.d": "A career built in-house: from warehouse operator/data entry to stock controller, Access developer, project and supplier management, key client and process engineering, up to Project Manager with decision-making autonomy.",
     "exp2.p": "Mar 2019 — Jul 2019",
-    "exp2.r": "Metrology application internship",
-    "exp2.d": "Experience in customer service, metrology application and data entry.",
     "exp3.p": "Sep 2017 — Jul 2019",
-    "exp3.r": "ITS Aircraft Construction & Maintenance",
-    "exp3.o": "Higher technical education",
-    "exp3.d": "A strongly technical programme, with a pragmatic approach geared to solving operational problems.",
     "exp4.p": "Sep 2012 — Jul 2017",
-    "exp4.r": "IT Technician Diploma",
-    "exp4.o": "Technical diploma",
-    "exp4.d": "Technical background focused on systems and data analysis.",
 
     "cases.eyebrow": "Case studies",
-    "cases.title": "Real projects, concrete results.",
-    "cases.intro": "A selection of projects delivered for multinational key accounts, where process analysis generated measurable efficiency.",
-    "case1.tag": "E-commerce & Logistics",
-    "case1.d": "Bringing e-commerce in-house while outsourcing logistics only. Analysis of historical data revealed an average basket of 10 items/order, handled with batch and expiry tracking in FEFO/FIFO logic and continuous WMS integration.",
-    "case2.tag": "Integration & Cost",
-    "case2.d": "An e-commerce built from scratch, avoiding the integration costs of SAP. Sales, VAT registration, logistics and delivery handled by Armonia Teklog: thousands of hours of data re-keying between Shopify and SAP saved.",
-    "case3.tag": "B2B as B2C",
-    "case3.d": "With Audes, dedicated \"corporate\" e-commerce stores for workwear at every site worldwide. Treating each shipment as a managed exception: 4 garments delivered to a BMW workshop in Azerbaijan in just 72 hours.",
-    "case4.tag": "Data Platform",
-    "case4.d": "Replaced dozens of Excel files with 2 bespoke applications and an in-cloud platform holding the entire database. A single autonomous manager over 300,000 sqm of warehouse, with metrics and statistics available instantly.",
-    "case5.tag": "Flash Sales",
-    "case5.d": "IT, logistics and operational management of flash-sale peaks (from 0 to 20,000 orders in a day) with a warehouse system easy to learn even for newly hired staff. The philosophy: manage the chaos, don't impose order.",
-    "case6.tag": "Medical",
-    "case6.d": "Interfacing with a rigid ERP and strict medical constraints (batches, expiry dates, serial numbers). In 6 weeks: documentation study, IT specifications, partial and full testing and go-live with no adjustments needed.",
-
     "skills.eyebrow": "Skills",
-    "skills.title": "Tools and method.",
-    "skills.g1": "Systems & Platforms",
-    "skills.g2": "Development & Data",
-    "skills.g3": "Integration",
-    "skills.g4": "Method & Governance",
-    "skills.office": "Advanced Office",
-    "skills.autolog": "Logistics automation",
 
     "contact.eyebrow": "Contact",
-    "contact.title": "Let's build your logistics together.",
-    "contact.intro": "Whether it's optimizing a warehouse, integrating systems or launching a new e-commerce project, I'm available for an initial, no-obligation conversation.",
     "contact.phone": "Phone",
     "contact.cv.k": "Résumé",
-    "contact.cv.v": "Download CV (PDF)",
-
-    "footer.copy": "Andrea Palermo &middot; Logistics Consulting & Project Management"
+    "contact.cv.v": "Download CV (PDF)"
   };
 
   var i18nEls = Array.prototype.slice.call(document.querySelectorAll("[data-i18n]"));
-  var IT = {}; // cache of original Italian content
+  var IT = {}; // original Italian, read from the page
 
   i18nEls.forEach(function (el) {
     var key = el.getAttribute("data-i18n");
     var attr = el.getAttribute("data-i18n-attr");
-    IT[key] = attr ? el.getAttribute(attr) : el.innerHTML;
+    IT[key] = attr ? el.getAttribute(attr) : el.textContent.replace(/\s+/g, " ").trim();
   });
 
+  /* --- Translation cache (localStorage), keyed by Italian source text --- */
+  var CACHE_KEY = "ap-tr-it-en";
+  var cache = {};
+  try { cache = JSON.parse(localStorage.getItem(CACHE_KEY) || "{}") || {}; } catch (e) { cache = {}; }
+  var saveTimer = null;
+  function saveCacheSoon() {
+    if (saveTimer) return;
+    saveTimer = setTimeout(function () {
+      saveTimer = null;
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); } catch (e) {}
+    }, 500);
+  }
+
+  /* --- Machine translation: Google (unofficial) with MyMemory fallback --- */
+  function viaGoogle(text) {
+    var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=it&tl=en&dt=t&q=" +
+      encodeURIComponent(text);
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error("google");
+      return r.json();
+    }).then(function (data) {
+      if (!data || !data[0]) throw new Error("google-shape");
+      return data[0].map(function (seg) { return seg[0]; }).join("");
+    });
+  }
+  function viaMyMemory(text) {
+    var url = "https://api.mymemory.translated.net/get?langpair=it|en&q=" + encodeURIComponent(text);
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error("mymemory");
+      return r.json();
+    }).then(function (data) {
+      var t = data && data.responseData && data.responseData.translatedText;
+      if (!t) throw new Error("mymemory-shape");
+      return t;
+    });
+  }
+  function translate(text) {
+    return viaGoogle(text).catch(function () { return viaMyMemory(text); });
+  }
+
+  /* --- Apply a language to the page --- */
   var flagEl = document.getElementById("langFlag");
   var codeEl = document.getElementById("langCode");
   var switchBtn = document.getElementById("langSwitch");
+  var applyToken = 0; // guards against out-of-order async updates
+
+  function setEl(el, value) {
+    var attr = el.getAttribute("data-i18n-attr");
+    if (attr) el.setAttribute(attr, value);
+    else el.textContent = value;
+  }
 
   function applyLang(lang) {
-    var dict = lang === "en" ? EN : IT;
-    i18nEls.forEach(function (el) {
-      var key = el.getAttribute("data-i18n");
-      var val = dict[key];
-      if (val == null) return; // no translation → keep Italian
-      var attr = el.getAttribute("data-i18n-attr");
-      if (attr) el.setAttribute(attr, val);
-      else el.innerHTML = val;
-    });
-
+    var isEN = lang === "en";
+    var token = ++applyToken;
     document.documentElement.setAttribute("lang", lang);
 
-    // The button offers the OTHER language.
-    var toEN = lang !== "en";
-    flagEl.innerHTML = toEN ? FLAGS.gb : FLAGS.it;
-    codeEl.textContent = toEN ? "EN" : "IT";
-    switchBtn.setAttribute("aria-label", toEN ? "Switch to English" : "Passa all'italiano");
-
+    // Toggle button offers the OTHER language.
+    flagEl.innerHTML = isEN ? FLAGS.it : FLAGS.gb;
+    codeEl.textContent = isEN ? "IT" : "EN";
+    switchBtn.setAttribute("aria-label", isEN ? "Passa all'italiano" : "Switch to English");
     try { localStorage.setItem("ap-lang", lang); } catch (e) {}
+
+    i18nEls.forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      var src = IT[key];
+
+      if (!isEN) { setEl(el, src); return; }              // back to Italian
+      if (OVERRIDES[key] != null) { setEl(el, OVERRIDES[key]); return; }
+      if (!src) return;
+      if (cache[src] != null) { setEl(el, cache[src]); return; }
+
+      // Not translated yet: keep Italian, fetch, then swap in.
+      setEl(el, src);
+      translate(src).then(function (en) {
+        if (!en) return;
+        cache[src] = en;
+        saveCacheSoon();
+        if (token === applyToken) setEl(el, en); // still on English, not superseded
+      }).catch(function () { /* leave Italian on failure */ });
+    });
   }
 
   var saved;

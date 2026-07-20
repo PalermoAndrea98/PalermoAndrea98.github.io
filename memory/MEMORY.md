@@ -1,0 +1,1 @@
+- [i18n architecture](i18n-architecture.md) — IT lives in index.html, EN in the `EN` dict in script.js; editing one doesn't update the other
