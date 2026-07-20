@@ -257,43 +257,27 @@
   });
 
   /* ==========================================================
-     Case-studies carousel — content lives in cases.csv
-     (2 columns: Azienda, Area). Edit that file to maintain it.
+     Case-studies carousel.
+
+     >>> MAINTAIN THE BRAND LIST HERE <<<
+     One entry per line:  ["Nome azienda", "Macro-area"]
+     Company names show as-is; the area label auto-translates to
+     English. Add / remove / reorder lines freely.
      ========================================================== */
   (function () {
     var track = document.getElementById("casesTrack");
-    if (!track || !window.fetch) return;
+    if (!track) return;
 
-    fetch("cases.csv", { cache: "no-cache" })
-      .then(function (r) { if (!r.ok) throw new Error("csv"); return r.text(); })
-      .then(function (text) {
-        var rows = parseCsv(text);
-        if (rows.length) build(rows);
-      })
-      .catch(function () { /* leave carousel empty if the file can't be read */ });
-
-    function unquote(s) {
-      if (s.length >= 2 && s.charAt(0) === '"' && s.charAt(s.length - 1) === '"') {
-        return s.slice(1, -1).replace(/""/g, '"');
-      }
-      return s;
-    }
-
-    function parseCsv(text) {
-      var lines = text.split(/\r?\n/);
-      var out = [];
-      for (var i = 0; i < lines.length; i++) {
-        var line = lines[i].trim();
-        if (!line) continue;
-        if (i === 0 && /azienda/i.test(line)) continue; // skip header row
-        var c = line.indexOf(",");                       // split on first comma only
-        if (c === -1) continue;
-        var company = unquote(line.slice(0, c).trim());
-        var area = unquote(line.slice(c + 1).trim());
-        if (company) out.push([company, area]);
-      }
-      return out;
-    }
+    var CASES = [
+      ["Bialetti",               "E-commerce & Logistica"],
+      ["Lagostina",              "Integrazione & Costi"],
+      ["BMW / ENI / Electrolux", "B2B agile"],
+      ["Michelin",               "Data Platform"],
+      ["Veepee",                 "Flash Sales"],
+      ["Intermed",               "Medicale"],
+      ["Rummo",                  "Integrazione WMS - ERP"],
+      ["Armonia Group",          "Layout di magazzino e automazione"]
+    ];
 
     function makeItem(company, area, ghost) {
       var item = document.createElement("div");
@@ -312,18 +296,17 @@
       return item;
     }
 
-    function build(rows) {
-      var frag = document.createDocumentFragment();
-      // Two identical copies → seamless translateX(-50%) loop.
-      for (var copy = 0; copy < 2; copy++) {
-        for (var i = 0; i < rows.length; i++) {
-          frag.appendChild(makeItem(rows[i][0], rows[i][1], copy === 1));
-        }
+    var frag = document.createDocumentFragment();
+    // Two identical copies → seamless translateX(-50%) loop.
+    for (var copy = 0; copy < 2; copy++) {
+      for (var i = 0; i < CASES.length; i++) {
+        frag.appendChild(makeItem(CASES[i][0], CASES[i][1], copy === 1));
       }
-      track.appendChild(frag);
-      // Localize the freshly built area labels to the active language.
-      var isEN = document.documentElement.getAttribute("lang") === "en";
-      carouselAreas.forEach(function (a) { localize(a.el, null, a.it, isEN, applyToken); });
     }
+    track.appendChild(frag);
+
+    // Localize the freshly built area labels to the active language.
+    var isEN = document.documentElement.getAttribute("lang") === "en";
+    carouselAreas.forEach(function (a) { localize(a.el, null, a.it, isEN, applyToken); });
   })();
 })();

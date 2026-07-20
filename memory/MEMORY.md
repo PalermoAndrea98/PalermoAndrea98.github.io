@@ -1,2 +1,2 @@
 - [i18n architecture](i18n-architecture.md) — IT written in index.html; EN auto-machine-translated at runtime & cached; short labels curated in `OVERRIDES`
-- [cases carousel](cases-carousel.md) — "Casi studio" is a marquee fed by the editable cases.csv (2 columns)
+- [cases carousel](cases-carousel.md) — "Casi studio" is a marquee; brand list is the hardcoded `CASES` array in script.js
