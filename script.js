@@ -265,18 +265,22 @@
      English. Add / remove / reorder lines freely.
      ========================================================== */
   (function () {
-    var track = document.getElementById("casesTrack");
-    if (!track) return;
+    var track1 = document.getElementById("casesTrack1");
+    var track2 = document.getElementById("casesTrack2");
+    if (!track1 && !track2) return;
 
     var CASES = [
       ["Bialetti",               "E-commerce & Logistica"],
       ["Lagostina",              "Integrazione & Costi"],
-      ["BMW / ENI / Electrolux", "B2B agile"],
+      ["Audes: BMW / ENI / Electrolux...", "B2B agile"],
       ["Michelin",               "Data Platform"],
       ["Veepee",                 "Flash Sales"],
       ["Intermed",               "Medicale"],
       ["Rummo",                  "Integrazione WMS - ERP"],
-      ["Armonia Group",          "Layout di magazzino e automazione"]
+      ["Armonia Group",          "Layout di magazzino e automazione"],
+      ["Teddy",                  "Distribuzione B2B internazionale"],
+      ["PostalMarket",           "E-Commerce & dropshipping"],
+      ["GLS, BRT, DHL...",       "WMS con direct-to-label"],
     ];
 
     function makeItem(company, area, ghost) {
@@ -296,14 +300,22 @@
       return item;
     }
 
-    var frag = document.createDocumentFragment();
-    // Two identical copies → seamless translateX(-50%) loop.
-    for (var copy = 0; copy < 2; copy++) {
-      for (var i = 0; i < CASES.length; i++) {
-        frag.appendChild(makeItem(CASES[i][0], CASES[i][1], copy === 1));
+    // Fill a track with two identical copies → seamless translateX(-50%) loop.
+    function fillTrack(track, rows) {
+      if (!track || !rows.length) return;
+      var frag = document.createDocumentFragment();
+      for (var copy = 0; copy < 2; copy++) {
+        for (var i = 0; i < rows.length; i++) {
+          frag.appendChild(makeItem(rows[i][0], rows[i][1], copy === 1));
+        }
       }
+      track.appendChild(frag);
     }
-    track.appendChild(frag);
+
+    // Split the list across the two rows (row 2 scrolls the opposite way).
+    var half = Math.ceil(CASES.length / 2);
+    fillTrack(track1, CASES.slice(0, half));
+    fillTrack(track2, CASES.slice(half));
 
     // Localize the freshly built area labels to the active language.
     var isEN = document.documentElement.getAttribute("lang") === "en";

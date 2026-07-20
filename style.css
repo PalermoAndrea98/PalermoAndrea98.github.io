@@ -252,8 +252,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .carousel__track {
   display: flex; width: max-content;
-  animation: carousel-scroll 45s linear infinite;
+  animation: carousel-scroll 30s linear infinite;
 }
+.carousel__track + .carousel__track { margin-top: 1rem; animation-duration: 45s; }
+.carousel__track--rev { animation-direction: reverse; }
 .carousel:hover .carousel__track,
 .carousel:focus-within .carousel__track { animation-play-state: paused; }
 
@@ -263,15 +265,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 .carousel__item {
-  flex: 0 0 auto; min-width: 210px; margin-right: 1.25rem;
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 1.4rem 1.7rem; transition: border-color .31s ease, background .31s ease;
+  flex: 0 0 auto; min-width: 170px; margin-right: 1rem; text-align: center;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+  padding: 1rem 1.6rem; transition: border-color .31s ease, background .31s ease;
 }
 .carousel__item:hover { border-color: var(--border-2); background: var(--surface-2); }
-.carousel__co { font-family: var(--font-head); font-weight: 600; font-size: 1.2rem; color: var(--text); }
+.carousel__co { font-family: var(--font-head); font-weight: 600; font-size: .98rem; color: var(--text); }
 .carousel__area {
-  display: block; margin-top: .3rem; font-size: .82rem; font-weight: 600;
-  letter-spacing: .06em; text-transform: uppercase; color: var(--accent-2);
+  display: block; margin-top: .2rem; font-size: .68rem; font-weight: 600;
+  letter-spacing: .05em; text-transform: uppercase; color: var(--accent-2);
 }
 
 @media (prefers-reduced-motion: reduce) {
