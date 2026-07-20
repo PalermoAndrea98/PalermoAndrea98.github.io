@@ -260,9 +260,11 @@
      Case-studies carousel.
 
      >>> MAINTAIN THE BRAND LIST HERE <<<
-     One entry per line:  ["Nome azienda", "Macro-area"]
-     Company names show as-is; the area label auto-translates to
-     English. Add / remove / reorder lines freely.
+     One entry per line:  ["Nome azienda", "Macro-area", "URL"]
+     The 3rd value (URL) is OPTIONAL: add a link to make that box
+     clickable (opens the site in a new tab, shown with a ↗). Leave
+     it as "" for a non-clickable box. Company names show as-is; the
+     area label auto-translates to English. Add/remove/reorder freely.
      ========================================================== */
   (function () {
     var track1 = document.getElementById("casesTrack1");
@@ -270,26 +272,42 @@
     if (!track1 && !track2) return;
 
     var CASES = [
-      ["Bialetti",               "E-commerce & Logistica"],
-      ["Lagostina",              "Integrazione & Costi"],
-      ["Audes: BMW / ENI / Electrolux...", "B2B agile"],
-      ["Michelin",               "Data Platform"],
-      ["Veepee",                 "Flash Sales"],
-      ["Intermed",               "Medicale"],
-      ["Rummo",                  "Integrazione WMS - ERP"],
-      ["Armonia Group",          "Layout di magazzino e automazione"],
-      ["Teddy",                  "Distribuzione B2B internazionale"],
-      ["PostalMarket",           "E-Commerce & dropshipping"],
-      ["GLS, BRT, DHL...",       "WMS con direct-to-label"],
+      ["Bialetti",               "E-commerce & Logistica",             "https://www.bialetti.com"],
+      ["Lagostina",              "Integrazione & Costi",               "https://www.lagostina.it"],
+      ["Audes: BMW / ENI / Electrolux...", "B2B agile",                "https://audes.com/"],
+      ["Michelin",               "Data Platform",                      "https://jobs.michelin.it/recruitment-sites/cuneo"],
+      ["Veepee",                 "Flash Sales",                        "https://www.veepee.it/"],
+      ["Intermed",               "Medicale",                           "https://www.intermeditalia.it/ita/"],
+      ["pasta Rummo",            "Integrazione WMS - ERP",             "https://www.pastarummo.it/"],
+      ["Armonia Group",          "Layout di magazzino e automazione",  "https://armonia-group.it"],
+      ["Gruppo Teddy",           "Distribuzione B2B internazionale",   "https://www.teddy.it/it-it"],
+      ["PostalMarket",           "E-Commerce & dropshipping",          ""],
+      ["GLS, BRT, DHL...",       "WMS con direct-to-label",            ""],
     ];
 
-    function makeItem(company, area, ghost) {
-      var item = document.createElement("div");
-      item.className = "carousel__item";
-      if (ghost) item.setAttribute("aria-hidden", "true");
+    function makeItem(company, area, url, ghost) {
+      var isLink = !!url;
+      var item = document.createElement(isLink ? "a" : "div");
+      item.className = "carousel__item" + (isLink ? " carousel__item--link" : "");
+      if (isLink) {
+        item.href = url;
+        item.target = "_blank";
+        item.rel = "noopener";
+      }
+      if (ghost) {
+        item.setAttribute("aria-hidden", "true");
+        if (isLink) item.setAttribute("tabindex", "-1"); // don't tab into the duplicate copy
+      }
       var co = document.createElement("span");
       co.className = "carousel__co";
       co.textContent = company;
+      if (isLink) {
+        var ext = document.createElement("span");
+        ext.className = "carousel__ext";
+        ext.setAttribute("aria-hidden", "true");
+        ext.textContent = "↗";
+        co.appendChild(ext);
+      }
       item.appendChild(co);
       if (area) {
         var ar = document.createElement("span");
@@ -306,7 +324,7 @@
       var frag = document.createDocumentFragment();
       for (var copy = 0; copy < 2; copy++) {
         for (var i = 0; i < rows.length; i++) {
-          frag.appendChild(makeItem(rows[i][0], rows[i][1], copy === 1));
+          frag.appendChild(makeItem(rows[i][0], rows[i][1], rows[i][2], copy === 1));
         }
       }
       track.appendChild(frag);

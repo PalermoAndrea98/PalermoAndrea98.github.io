@@ -270,6 +270,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   padding: 1rem 1.6rem; transition: border-color .31s ease, background .31s ease;
 }
 .carousel__item:hover { border-color: var(--border-2); background: var(--surface-2); }
+a.carousel__item { text-decoration: none; color: inherit; }
+.carousel__item--link { cursor: pointer; }
+.carousel__item--link:hover { border-color: var(--accent); background: var(--surface-2); }
+.carousel__ext { margin-left: .35em; color: var(--accent-2); font-weight: 700; }
 .carousel__co { font-family: var(--font-head); font-weight: 600; font-size: .98rem; color: var(--text); }
 .carousel__area {
   display: block; margin-top: .2rem; font-size: .68rem; font-weight: 600;
