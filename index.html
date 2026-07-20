@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andrea Palermo — Consulenza e Project Management Logistico</title>
-  <meta name="description" content="Andrea Palermo — Project Manager logistico/IT e process engineer. Analisi dei processi, ottimizzazione dei magazzini, integrazione WMS/ERP e automazione logistica per key account multinazionali.">
+  <title data-i18n="meta.title">Andrea Palermo — Consulenza e Project Management Logistico</title>
+  <meta name="description" data-i18n-attr="content" data-i18n="meta.description" content="Andrea Palermo — Project Manager logistico/IT e process engineer. Analisi dei processi, ottimizzazione dei magazzini, integrazione WMS/ERP e automazione logistica per key account multinazionali.">
   <meta name="author" content="Andrea Palermo">
 
   <!-- Open Graph -->
@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Salta al contenuto</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Salta al contenuto</a>
 
   <!-- ===================== NAV ===================== -->
   <header class="nav" id="nav">
@@ -29,18 +29,25 @@
         <span class="nav__name">Andrea Palermo</span>
       </a>
 
-      <nav class="nav__links" id="navLinks" aria-label="Navigazione principale">
-        <a href="#about">Chi sono</a>
-        <a href="#services">Servizi</a>
-        <a href="#experience">Esperienza</a>
-        <a href="#cases">Casi studio</a>
-        <a href="#skills">Competenze</a>
-        <a href="#contact" class="nav__cta">Contatti</a>
-      </nav>
+      <div class="nav__actions">
+        <nav class="nav__links" id="navLinks" aria-label="Navigazione principale">
+          <a href="#about" data-i18n="nav.about">Chi sono</a>
+          <a href="#services" data-i18n="nav.services">Servizi</a>
+          <a href="#experience" data-i18n="nav.experience">Esperienza</a>
+          <a href="#cases" data-i18n="nav.cases">Casi studio</a>
+          <a href="#skills" data-i18n="nav.skills">Competenze</a>
+          <a href="#contact" class="nav__cta" data-i18n="nav.contact">Contatti</a>
+        </nav>
 
-      <button class="nav__toggle" id="navToggle" aria-label="Apri menù" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
+        <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch to English">
+          <span class="lang-switch__flag" id="langFlag" aria-hidden="true"></span>
+          <span class="lang-switch__code" id="langCode">EN</span>
+        </button>
+
+        <button class="nav__toggle" id="navToggle" aria-label="Apri menù" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -50,35 +57,35 @@
       <div class="hero__glow" aria-hidden="true"></div>
       <div class="hero__grid" aria-hidden="true"></div>
       <div class="container hero__inner">
-        <p class="hero__eyebrow">Project Manager Logistico &middot; IT &middot; Process Engineer</p>
-        <h1 class="hero__title">
+        <p class="hero__eyebrow" data-i18n="hero.eyebrow">Project Manager Logistico &middot; IT &middot; Process Engineer</p>
+        <h1 class="hero__title" data-i18n="hero.title">
           Trasformo processi logistici complessi in
           <span class="hero__accent">architetture efficienti.</span>
         </h1>
-        <p class="hero__lead">
+        <p class="hero__lead" data-i18n="hero.lead">
           Analisi dei processi, ottimizzazione dei magazzini e logistica integrata,
           con particolare attenzione alla mappatura dei flussi fisici e alla loro
           trasposizione in soluzioni informatiche scalabili per key account multinazionali.
         </p>
         <div class="hero__actions">
-          <a href="#contact" class="btn btn--primary">Parliamo del tuo progetto</a>
+          <a href="#contact" class="btn btn--primary" data-i18n="hero.cta">Parliamo del tuo progetto</a>
           <a href="Documents/Curriculum.pdf" class="btn btn--ghost" target="_blank" rel="noopener">
-            Scarica il CV
+            <span data-i18n="hero.cv">Scarica il CV</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
 
         <dl class="hero__stats">
           <div class="stat">
-            <dt>Anni in logistica integrata</dt>
+            <dt data-i18n="hero.stat1">Anni in logistica integrata</dt>
             <dd>5+</dd>
           </div>
           <div class="stat">
-            <dt>Key account multinazionali</dt>
+            <dt data-i18n="hero.stat2">Key account multinazionali</dt>
             <dd>10+</dd>
           </div>
           <div class="stat">
-            <dt>mq di magazzino gestiti</dt>
+            <dt data-i18n="hero.stat3">mq di magazzino gestiti</dt>
             <dd>300k</dd>
           </div>
         </dl>
@@ -89,9 +96,9 @@
     <section class="section" id="about">
       <div class="container about">
         <div class="about__text">
-          <p class="section__eyebrow">Chi sono</p>
-          <h2 class="section__title">Dal magazzino alla governance dei processi.</h2>
-          <p>
+          <p class="section__eyebrow" data-i18n="about.eyebrow">Chi sono</p>
+          <h2 class="section__title" data-i18n="about.title">Dal magazzino alla governance dei processi.</h2>
+          <p data-i18n="about.p1">
             Sono un Project Manager logistico e IT con una carriera costruita dal campo:
             ho iniziato come figura ibrida tra magazziniere e data entry e, grazie al
             rapporto di fiducia con la direzione, ho attraversato ogni fase della catena
@@ -99,24 +106,24 @@
             commesse, avvio di startup, gestione key client e fornitori — fino a
             ricoprire il ruolo di PM con piena autonomia decisionale.
           </p>
-          <p>
+          <p data-i18n="about.p2">
             Questo percorso mi permette di parlare la lingua di chi opera in magazzino
             e quella di chi progetta i sistemi informatici, colmando il divario tra il
             flusso fisico e la sua rappresentazione digitale. Il mio approccio è
             pragmatico e orientato alla risoluzione dei problemi operativi.
           </p>
           <ul class="about__highlights">
-            <li>
+            <li data-i18n="about.hl1">
               <span class="about__hl-title">Network selezionato</span>
               Rete di partner e fornitori che consente condizioni economiche agevolate
               e servizi logistici a tariffe preferenziali.
             </li>
-            <li>
+            <li data-i18n="about.hl2">
               <span class="about__hl-title">Automazione end-to-end</span>
               Progettazione di interfacce informatiche per la completa automazione
               logistica ed e-commerce.
             </li>
-            <li>
+            <li data-i18n="about.hl3">
               <span class="about__hl-title">Visione trasversale</span>
               Esperienza in diverse categorie merceologiche e nei vincoli operativi che
               ciascuna comporta.
@@ -126,14 +133,14 @@
         <aside class="about__card" aria-label="Profilo sintetico">
           <div class="about__avatar" aria-hidden="true">AP</div>
           <p class="about__role">Andrea Palermo</p>
-          <p class="about__sub">PM / Consulente / Process Engineer</p>
+          <p class="about__sub" data-i18n="about.card.sub">PM / Consulente / Process Engineer</p>
           <ul class="about__facts">
-            <li><span>Azienda</span> Armonia Teklog S.r.l.</li>
-            <li><span>Dal</span> Novembre 2019</li>
-            <li><span>Focus</span> Logistica integrata &amp; IT</li>
-            <li><span>Lingue</span> Italiano, Inglese (C1 &middot; EF SET)</li>
+            <li><span data-i18n="about.fact1.k">Azienda</span> <span>Armonia Teklog S.r.l.</span></li>
+            <li><span data-i18n="about.fact2.k">Dal</span> <span data-i18n="about.fact2.v">Novembre 2019</span></li>
+            <li><span data-i18n="about.fact3.k">Focus</span> <span data-i18n="about.fact3.v">Logistica integrata &amp; IT</span></li>
+            <li><span data-i18n="about.fact4.k">Lingue</span> <span data-i18n="about.fact4.v">Italiano, Inglese (C1 &middot; EF SET)</span></li>
           </ul>
-          <a href="#contact" class="btn btn--primary btn--block">Contattami</a>
+          <a href="#contact" class="btn btn--primary btn--block" data-i18n="about.card.cta">Contattami</a>
         </aside>
       </div>
     </section>
@@ -142,9 +149,9 @@
     <section class="section section--alt" id="services">
       <div class="container">
         <div class="section__head">
-          <p class="section__eyebrow">Servizi</p>
-          <h2 class="section__title">Come posso portare valore.</h2>
-          <p class="section__intro">
+          <p class="section__eyebrow" data-i18n="services.eyebrow">Servizi</p>
+          <h2 class="section__title" data-i18n="services.title">Come posso portare valore.</h2>
+          <p class="section__intro" data-i18n="services.intro">
             Un supporto consulenziale che parte dall'analisi del processo fisico e arriva
             alla soluzione informatica, con l'obiettivo costante di abbattere i costi e
             aumentare l'efficienza operativa.
@@ -156,48 +163,48 @@
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="19" cy="15" r="3" stroke="currentColor" stroke-width="2"/></svg>
             </div>
-            <h3>Process Mapping &amp; Reengineering</h3>
-            <p>Mappatura dei flussi fisici, analisi tempi e metodi e ridisegno dei processi per eliminare sprechi e colli di bottiglia.</p>
+            <h3 data-i18n="svc1.t">Process Mapping &amp; Reengineering</h3>
+            <p data-i18n="svc1.d">Mappatura dei flussi fisici, analisi tempi e metodi e ridisegno dei processi per eliminare sprechi e colli di bottiglia.</p>
           </article>
 
           <article class="card">
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="8.5" y="14" width="7" height="6" rx="1.5" stroke="currentColor" stroke-width="2"/><path d="M6.5 11v1.5a1.5 1.5 0 001.5 1.5M17.5 11v1.5a1.5 1.5 0 01-1.5 1.5" stroke="currentColor" stroke-width="2"/></svg>
             </div>
-            <h3>Integrazione WMS &amp; ERP</h3>
-            <p>Interfacciamento tra sistemi (SAP, AS400/IBM, Oracle) e piattaforme e-commerce tramite API, FTP/SFTP, per uno scambio dati continuo e affidabile.</p>
+            <h3 data-i18n="svc2.t">Integrazione WMS &amp; ERP</h3>
+            <p data-i18n="svc2.d">Interfacciamento tra sistemi (SAP, AS400/IBM, Oracle) e piattaforme e-commerce tramite API, FTP/SFTP, per uno scambio dati continuo e affidabile.</p>
           </article>
 
           <article class="card">
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10m5 10V4m5 16v-6m5 6V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h3>Data Analysis &amp; Business Intelligence</h3>
-            <p>Dai dati storici alle decisioni: analisi con SQL, Python e Power BI per rendere metriche e statistiche fruibili in tempo reale.</p>
+            <h3 data-i18n="svc3.t">Data Analysis &amp; Business Intelligence</h3>
+            <p data-i18n="svc3.d">Dai dati storici alle decisioni: analisi con SQL, Python e Power BI per rendere metriche e statistiche fruibili in tempo reale.</p>
           </article>
 
           <article class="card">
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M3 7l9-4 9 4-9 4-9-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3 7v6l9 4 9-4V7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             </div>
-            <h3>Inventory Management</h3>
-            <p>Gestione di lotti, scadenze e logiche FEFO/FIFO, con controllo stock accurato anche per categorie critiche come alimentare e medicale.</p>
+            <h3 data-i18n="svc4.t">Inventory Management</h3>
+            <p data-i18n="svc4.d">Gestione di lotti, scadenze e logiche FEFO/FIFO, con controllo stock accurato anche per categorie critiche come alimentare e medicale.</p>
           </article>
 
           <article class="card">
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m13.5-6.5l-2 2m-9 9l2-2m0-9l2 2m9 9l-2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
             </div>
-            <h3>KPI, SLA &amp; ROI</h3>
-            <p>Definizione e monitoraggio di KPI e SLA, calcolo del ROI e cost control per una governance strategica e scalabile.</p>
+            <h3 data-i18n="svc5.t">KPI, SLA &amp; ROI</h3>
+            <p data-i18n="svc5.d">Definizione e monitoraggio di KPI e SLA, calcolo del ROI e cost control per una governance strategica e scalabile.</p>
           </article>
 
           <article class="card">
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M7 2v4M17 2v4M8 14h3m2 0h3M8 17h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h3>Project Management</h3>
-            <p>Conduzione di progetti con metodologie Agile, Waterfall, Hybrid e Prince2, coordinando team interfunzionali dal budget alla messa in opera.</p>
+            <h3 data-i18n="svc6.t">Project Management</h3>
+            <p data-i18n="svc6.d">Conduzione di progetti con metodologie Agile, Waterfall, Hybrid e Prince2, coordinando team interfunzionali dal budget alla messa in opera.</p>
           </article>
         </div>
       </div>
@@ -207,17 +214,17 @@
     <section class="section" id="experience">
       <div class="container">
         <div class="section__head">
-          <p class="section__eyebrow">Esperienza &amp; Formazione</p>
-          <h2 class="section__title">Un percorso in rapida ascesa.</h2>
+          <p class="section__eyebrow" data-i18n="exp.eyebrow">Esperienza &amp; Formazione</p>
+          <h2 class="section__title" data-i18n="exp.title">Un percorso in rapida ascesa.</h2>
         </div>
 
         <ol class="timeline">
           <li class="timeline__item">
             <span class="timeline__dot" aria-hidden="true"></span>
-            <p class="timeline__period">Nov 2019 — Oggi</p>
-            <h3 class="timeline__role">PM / Consulente / Process Engineer</h3>
+            <p class="timeline__period" data-i18n="exp1.p">Nov 2019 — Oggi</p>
+            <h3 class="timeline__role" data-i18n="exp1.r">PM / Consulente / Process Engineer</h3>
             <p class="timeline__org">Armonia Teklog S.r.l.</p>
-            <p class="timeline__desc">
+            <p class="timeline__desc" data-i18n="exp1.d">
               Carriera costruita internamente: da magazziniere/data entry a controller
               stock, sviluppatore Access, gestione commesse e fornitori, key client e
               ingegneria dei processi, fino a Project Manager con autonomia decisionale.
@@ -225,29 +232,29 @@
           </li>
           <li class="timeline__item">
             <span class="timeline__dot" aria-hidden="true"></span>
-            <p class="timeline__period">Mar 2019 — Lug 2019</p>
-            <h3 class="timeline__role">Stage applicativo metrologico</h3>
+            <p class="timeline__period" data-i18n="exp2.p">Mar 2019 — Lug 2019</p>
+            <h3 class="timeline__role" data-i18n="exp2.r">Stage applicativo metrologico</h3>
             <p class="timeline__org">Gruppo Carl Zeiss</p>
-            <p class="timeline__desc">
+            <p class="timeline__desc" data-i18n="exp2.d">
               Esperienza in customer service, applicazione metrologica e data entry.
             </p>
           </li>
           <li class="timeline__item">
             <span class="timeline__dot" aria-hidden="true"></span>
-            <p class="timeline__period">Set 2017 — Lug 2019</p>
-            <h3 class="timeline__role">ITS Costruzione e Manutenzione Aeromobili</h3>
-            <p class="timeline__org">Istruzione tecnica superiore</p>
-            <p class="timeline__desc">
+            <p class="timeline__period" data-i18n="exp3.p">Set 2017 — Lug 2019</p>
+            <h3 class="timeline__role" data-i18n="exp3.r">ITS Costruzione e Manutenzione Aeromobili</h3>
+            <p class="timeline__org" data-i18n="exp3.o">Istruzione tecnica superiore</p>
+            <p class="timeline__desc" data-i18n="exp3.d">
               Percorso a forte impronta tecnica, con approccio pragmatico orientato alla
               risoluzione di problemi operativi.
             </p>
           </li>
           <li class="timeline__item">
             <span class="timeline__dot" aria-hidden="true"></span>
-            <p class="timeline__period">Set 2012 — Lug 2017</p>
-            <h3 class="timeline__role">Perito Informatico</h3>
-            <p class="timeline__org">Diploma tecnico</p>
-            <p class="timeline__desc">
+            <p class="timeline__period" data-i18n="exp4.p">Set 2012 — Lug 2017</p>
+            <h3 class="timeline__role" data-i18n="exp4.r">Perito Informatico</h3>
+            <p class="timeline__org" data-i18n="exp4.o">Diploma tecnico</p>
+            <p class="timeline__desc" data-i18n="exp4.d">
               Background tecnico focalizzato sull'analisi dei sistemi e dei dati.
             </p>
           </li>
@@ -259,9 +266,9 @@
     <section class="section section--alt" id="cases">
       <div class="container">
         <div class="section__head">
-          <p class="section__eyebrow">Casi studio</p>
-          <h2 class="section__title">Progetti reali, risultati concreti.</h2>
-          <p class="section__intro">
+          <p class="section__eyebrow" data-i18n="cases.eyebrow">Casi studio</p>
+          <h2 class="section__title" data-i18n="cases.title">Progetti reali, risultati concreti.</h2>
+          <p class="section__intro" data-i18n="cases.intro">
             Una selezione di progetti condotti per key account multinazionali, dove
             l'analisi dei processi ha generato efficienza misurabile.
           </p>
@@ -269,9 +276,9 @@
 
         <div class="cases">
           <article class="case">
-            <span class="case__tag">E-commerce &amp; Logistica</span>
+            <span class="case__tag" data-i18n="case1.tag">E-commerce &amp; Logistica</span>
             <h3>Bialetti</h3>
-            <p>
+            <p data-i18n="case1.d">
               Internalizzazione dell'e-commerce con terziarizzazione della sola logistica.
               L'analisi dei dati storici ha rivelato un basket medio di 10 pz/ordine,
               gestito con tracciamento lotti e scadenze in logica FEFO/FIFO e integrazione
@@ -280,9 +287,9 @@
           </article>
 
           <article class="case">
-            <span class="case__tag">Integrazione &amp; Costi</span>
+            <span class="case__tag" data-i18n="case2.tag">Integrazione &amp; Costi</span>
             <h3>Lagostina — Groupe SEB</h3>
-            <p>
+            <p data-i18n="case2.d">
               E-commerce creato da zero evitando i costi di integrazione con SAP.
               Vendita, registrazione IVA, logistica e consegna gestite da Armonia Teklog:
               risparmiate migliaia di ore di trascrizione dati tra Shopify e SAP.
@@ -290,9 +297,9 @@
           </article>
 
           <article class="case">
-            <span class="case__tag">B2B come B2C</span>
+            <span class="case__tag" data-i18n="case3.tag">B2B come B2C</span>
             <h3>BMW / ENI / Electrolux &amp; altri</h3>
-            <p>
+            <p data-i18n="case3.d">
               Con Audes, e-commerce "aziendali" per l'abbigliamento da lavoro di ogni polo
               mondiale. Trattando ogni spedizione come un'eccezione gestita: 4 capi
               consegnati a un'officina BMW in Azerbaijan in sole 72 ore.
@@ -300,9 +307,9 @@
           </article>
 
           <article class="case">
-            <span class="case__tag">Data Platform</span>
+            <span class="case__tag" data-i18n="case4.tag">Data Platform</span>
             <h3>Michelin</h3>
-            <p>
+            <p data-i18n="case4.d">
               Sostituiti decine di file Excel con 2 applicativi ad hoc e una piattaforma
               in-cloud con l'intero database. Un solo responsabile autonomo su 300.000 mq
               di magazzino, con metriche e statistiche fruibili istantaneamente.
@@ -310,9 +317,9 @@
           </article>
 
           <article class="case">
-            <span class="case__tag">Flash Sales</span>
+            <span class="case__tag" data-i18n="case5.tag">Flash Sales</span>
             <h3>Veepee — Benetton, P&amp;G, Teddy…</h3>
-            <p>
+            <p data-i18n="case5.d">
               Gestione informatica, logistica e operativa dei picchi da flash sales
               (da 0 a 20.000 ordini in un giorno) con un sistema di magazzino assimilabile
               anche dal personale neo-assunto. La filosofia: gestire il caos, non imporlo.
@@ -320,9 +327,9 @@
           </article>
 
           <article class="case">
-            <span class="case__tag">Medicale</span>
+            <span class="case__tag" data-i18n="case6.tag">Medicale</span>
             <h3>Intermed</h3>
-            <p>
+            <p data-i18n="case6.d">
               Interfacciamento con un ERP rigido e vincoli medicali stringenti (lotti,
               scadenze, matricole). In 6 settimane: studio della documentazione, specifiche
               IT, test parziali e totali e messa in opera senza alcun aggiustamento.
@@ -336,34 +343,34 @@
     <section class="section" id="skills">
       <div class="container">
         <div class="section__head">
-          <p class="section__eyebrow">Competenze</p>
-          <h2 class="section__title">Strumenti e metodo.</h2>
+          <p class="section__eyebrow" data-i18n="skills.eyebrow">Competenze</p>
+          <h2 class="section__title" data-i18n="skills.title">Strumenti e metodo.</h2>
         </div>
 
         <div class="skills">
           <div class="skills__group">
-            <h3>Sistemi &amp; Piattaforme</h3>
+            <h3 data-i18n="skills.g1">Sistemi &amp; Piattaforme</h3>
             <ul class="tags">
               <li>SAP</li><li>AS400 / IBM</li><li>Oracle</li>
               <li>WMS</li><li>Power Platform</li><li>Power BI</li>
             </ul>
           </div>
           <div class="skills__group">
-            <h3>Sviluppo &amp; Dati</h3>
+            <h3 data-i18n="skills.g2">Sviluppo &amp; Dati</h3>
             <ul class="tags">
               <li>SQL</li><li>Python</li><li>VBA</li>
-              <li>Power Query</li><li>Access</li><li>Office avanzato</li>
+              <li>Power Query</li><li>Access</li><li data-i18n="skills.office">Office avanzato</li>
             </ul>
           </div>
           <div class="skills__group">
-            <h3>Integrazione</h3>
+            <h3 data-i18n="skills.g3">Integrazione</h3>
             <ul class="tags">
               <li>API</li><li>FTP / SFTP</li><li>E-commerce</li>
-              <li>Automazione logistica</li>
+              <li data-i18n="skills.autolog">Automazione logistica</li>
             </ul>
           </div>
           <div class="skills__group">
-            <h3>Metodo &amp; Governance</h3>
+            <h3 data-i18n="skills.g4">Metodo &amp; Governance</h3>
             <ul class="tags">
               <li>Agile</li><li>Waterfall</li><li>Prince2</li>
               <li>KPI &amp; SLA</li><li>ROI &amp; Cost control</li><li>ISO 9001</li>
@@ -377,9 +384,9 @@
     <section class="section section--alt" id="contact">
       <div class="container contact">
         <div class="contact__text">
-          <p class="section__eyebrow">Contatti</p>
-          <h2 class="section__title">Costruiamo insieme la tua logistica.</h2>
-          <p class="section__intro">
+          <p class="section__eyebrow" data-i18n="contact.eyebrow">Contatti</p>
+          <h2 class="section__title" data-i18n="contact.title">Costruiamo insieme la tua logistica.</h2>
+          <p class="section__intro" data-i18n="contact.intro">
             Che si tratti di ottimizzare un magazzino, integrare i sistemi o avviare un
             nuovo progetto e-commerce, sono a disposizione per un primo confronto senza impegno.
           </p>
@@ -399,7 +406,7 @@
               <svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2 2A15 15 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             </span>
             <span>
-              <span class="contact__label">Telefono</span>
+              <span class="contact__label" data-i18n="contact.phone">Telefono</span>
               +39 349 322 2300
             </span>
           </a>
@@ -408,8 +415,8 @@
               <svg viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v16H6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 2v4h4M9 13h6M9 17h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </span>
             <span>
-              <span class="contact__label">Curriculum</span>
-              Scarica il CV (PDF)
+              <span class="contact__label" data-i18n="contact.cv.k">Curriculum</span>
+              <span data-i18n="contact.cv.v">Scarica il CV (PDF)</span>
             </span>
           </a>
         </div>
@@ -421,11 +428,10 @@
   <footer class="footer">
     <div class="container footer__inner">
       <p class="footer__brand"><span class="nav__mark">AP</span> Andrea Palermo</p>
-      <p class="footer__copy">&copy; <span id="year">2026</span> Andrea Palermo &middot; Consulenza e Project Management Logistico</p>
+      <p class="footer__copy">&copy; <span id="year">2026</span> <span data-i18n="footer.copy">Andrea Palermo &middot; Consulenza e Project Management Logistico</span></p>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a965271f92524d918e134c362f3a8cf9"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
