@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
   <a class="skip-link" href="#main" data-i18n="skip">Salta al contenuto</a>
 
   <!-- ===================== NAV ===================== -->
@@ -87,8 +88,8 @@
             <dd>30+</dd>
           </div>
           <div class="stat">
-            <dt data-i18n="hero.stat3">volumi operativi gestiti</dt>
-            <dd data-i18n="hero.stat3.v">2,5+ mln/anno</dd>
+            <dt data-i18n="hero.stat3">volumi gestiti</dt>
+            <dd data-i18n="hero.stat3.v">3,5+ mln pezzi/anno</dd>
           </div>
         </dl>
       </div>
@@ -101,9 +102,9 @@
           <p class="section__eyebrow" data-i18n="about.eyebrow">Chi sono</p>
           <h2 class="section__title" data-i18n="about.title">Dal magazzino alla governance dei processi.</h2>
           <p data-i18n="about.p1">
-            Sono un consulente logistico e IT con una carriera costruita dal campo:
+            Sono un consulente logistico e IT con una carriera costruita sul campo:
             ho imparato i flussi come magazziniere, li ho mappati come data entry e
-            li ho modificati come ingegnere di processo.
+            li ho ottimizzati come ingegnere di processo.
             Attraversando ogni fase della catena, ho appreso i flussi aziendali.
             Mi sono occupato di: controllo stock, sviluppo applicativi, fatturazione,
             gestione commesse, startup, gestione key client e fornitori, fino alla 
@@ -407,6 +408,7 @@
     </div>
   </footer>
 
+  <script src="background.js"></script>
   <script src="script.js"></script>
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a965271f92524d918e134c362f3a8cf9"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
