@@ -293,6 +293,45 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
 .footer__brand { display: flex; align-items: center; gap: .6rem; font-family: var(--font-head); font-weight: 600; }
 .footer__copy { color: var(--text-mut); font-size: .88rem; }
+.footer__links { display: flex; gap: 1.2rem; }
+.footer__links a { color: var(--text-mut); font-size: .88rem; transition: color .28s ease; }
+.footer__links a:hover { color: var(--accent); }
+
+/* ---------- Contact form ---------- */
+.cform { display: grid; gap: 1.1rem; }
+.cform__row { display: grid; gap: .45rem; }
+.cform label {
+  font-family: var(--font-head); font-weight: 600; font-size: .78rem;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--text-mut);
+}
+.cform input, .cform textarea {
+  width: 100%; font: inherit; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: .8rem 1rem; transition: border-color .28s ease, box-shadow .28s ease, background .28s ease;
+}
+.cform input::placeholder, .cform textarea::placeholder { color: var(--text-mut); opacity: .7; }
+.cform input:focus, .cform textarea:focus {
+  outline: none; border-color: var(--accent); background: var(--surface-2);
+  box-shadow: 0 0 0 3px rgba(79, 209, 197, .15);
+}
+.cform textarea { resize: vertical; min-height: 130px; }
+.cform .btn { justify-self: start; margin-top: .2rem; }
+.cform__note { color: var(--text-mut); font-size: .82rem; margin-top: .2rem; }
+
+/* ---------- Legal / privacy page ---------- */
+.legal { padding: clamp(6rem, 13vh, 9rem) 0 4rem; }
+.legal__inner { max-width: 760px; }
+.legal__back {
+  display: inline-flex; align-items: center; gap: .4rem; color: var(--accent);
+  font-family: var(--font-head); font-weight: 600; font-size: .9rem; margin-bottom: 2rem;
+}
+.legal__back:hover { text-decoration: underline; }
+.legal h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: .4rem; }
+.legal__updated { color: var(--text-mut); font-size: .88rem; margin-bottom: 2.5rem; }
+.legal h2 { font-family: var(--font-head); font-size: 1.3rem; margin: 2.4rem 0 .8rem; }
+.legal p { color: var(--text-soft); margin-bottom: 1rem; }
+.legal a { color: var(--accent); overflow-wrap: anywhere; }
+.legal hr { border: 0; border-top: 1px solid var(--border); margin: 3rem 0; }
 
 /* ---------- Reveal animation ---------- */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .84s ease, transform .84s ease; }

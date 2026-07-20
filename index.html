@@ -61,8 +61,8 @@
       <div class="container hero__inner">
         <p class="hero__eyebrow" data-i18n="hero.eyebrow">Consulente Logistico &middot; IT &middot; Process Engineer</p>
         <h1 class="hero__title">
-          <span data-i18n="hero.title.a">Trasformo processi logistici complessi in</span>
-          <span class="hero__accent" data-i18n="hero.title.b">architetture efficienti.</span>
+          <span data-i18n="hero.title.a">Trasformo architetture logistiche complesse in</span>
+          <span class="hero__accent" data-i18n="hero.title.b">processi efficienti.</span>
         </h1>
         <p class="hero__lead" data-i18n="hero.lead">
           Analisi dei processi, ottimizzazione dei magazzini e logistica integrata,
@@ -87,8 +87,8 @@
             <dd>30+</dd>
           </div>
           <div class="stat">
-            <dt data-i18n="hero.stat3">volumi di pezzi gestiti</dt>
-            <dd data-i18n="hero.stat3.v">2,5 mln/anno</dd>
+            <dt data-i18n="hero.stat3">volumi operativi gestiti</dt>
+            <dd data-i18n="hero.stat3.v">2,5+ mln/anno</dd>
           </div>
         </dl>
       </div>
@@ -103,11 +103,11 @@
           <p data-i18n="about.p1">
             Sono un consulente logistico e IT con una carriera costruita dal campo:
             ho imparato i flussi come magazziniere, li ho mappati come data entry e
-            li ho modificati come process engeneer.
+            li ho modificati come ingegnere di processo.
             Attraversando ogni fase della catena, ho appreso i flussi aziendali.
             Mi sono occupato di: controllo stock, sviluppo applicativi, fatturazione,
-            gestione commesse, startup, gestione key client e fornitori. fino alla 
-            gestione dicommesse complesse come PM.
+            gestione commesse, startup, gestione key client e fornitori, fino alla 
+            gestione di commesse complesse come PM.
           </p>
           <p data-i18n="about.p2">
             Questo percorso mi permette di parlare la lingua di chi opera in magazzino
@@ -210,6 +210,36 @@
       </div>
     </section>
 
+    <!-- ===================== CONTACT FORM ===================== -->
+    <section class="section section--alt" id="contatto">
+      <div class="container contact">
+        <div class="contact__text">
+          <p class="section__eyebrow" data-i18n="cform.eyebrow">Scrivimi</p>
+          <h2 class="section__title" data-i18n="cform.title">Raccontami la tua sfida.</h2>
+          <p class="section__intro" data-i18n="cform.side">Hai un processo logistico da ottimizzare, un'integrazione da avviare o un progetto operativo da strutturare? Scrivimi per un primo confronto.</p>
+        </div>
+        <form class="cform" id="contactForm">
+          <div class="cform__row">
+            <label for="cf-name" data-i18n="cform.name">Nome</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required
+                   data-i18n="cform.ph.name" data-i18n-attr="placeholder" placeholder="Es. Mario Rossi">
+          </div>
+          <div class="cform__row">
+            <label for="cf-email" data-i18n="cform.email">La tua email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required
+                   data-i18n="cform.ph.email" data-i18n-attr="placeholder" placeholder="nome@azienda.it">
+          </div>
+          <div class="cform__row">
+            <label for="cf-message" data-i18n="cform.message">Messaggio</label>
+            <textarea id="cf-message" name="message" rows="5" required
+                      data-i18n="cform.ph.msg" data-i18n-attr="placeholder" placeholder="Descrivi brevemente la tua esigenza…"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary" data-i18n="cform.submit">Scrivimi via email</button>
+          <p class="cform__note" data-i18n="cform.note">Il pulsante apre il tuo programma di posta con il messaggio già compilato. Nessun dato viene memorizzato dal sito.</p>
+        </form>
+      </div>
+    </section>
+
     <!-- ===================== EXPERIENCE ===================== -->
     <section class="section" id="experience">
       <div class="container">
@@ -269,7 +299,7 @@
           <p class="section__eyebrow" data-i18n="cases.eyebrow">Casi studio</p>
           <h2 class="section__title" data-i18n="cases.title">Progetti reali, risultati concreti.</h2>
           <p class="section__intro" data-i18n="cases.intro">
-            Una selezione di progetti condotti per key account multinazionali, dove
+            Una selezione di progetti condotti dove
             l'analisi dei processi ha generato efficienza misurabile.
           </p>
         </div>
@@ -429,9 +459,13 @@
     <div class="container footer__inner">
       <p class="footer__brand"><img class="brand-logo" src="Documents/Images/LogoColore.png" alt="Logo Andrea Palermo" width="30" height="30"> Andrea Palermo</p>
       <p class="footer__copy">&copy; <span id="year">2026</span> <span data-i18n="footer.copy">Andrea Palermo &middot; Consulenza e Project Management Logistico</span></p>
+      <nav class="footer__links" aria-label="Note legali">
+        <a href="privacy.html" data-i18n="footer.privacy">Privacy policy</a>
+      </nav>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a965271f92524d918e134c362f3a8cf9"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

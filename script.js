@@ -59,6 +59,23 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  /* --- Contact form → opens the visitor's mail app (no backend) --- */
+  var contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (typeof contactForm.reportValidity === "function" && !contactForm.reportValidity()) return;
+      var name = (document.getElementById("cf-name").value || "").trim();
+      var email = (document.getElementById("cf-email").value || "").trim();
+      var message = (document.getElementById("cf-message").value || "").trim();
+      var subject = "Richiesta dal sito" + (name ? " — " + name : "");
+      var body = message + "\n\n—\n" + name + (email ? " <" + email + ">" : "");
+      window.location.href = "mailto:andreapalermo1998@gmail.com" +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+  }
+
   /* ==========================================================
      Internationalization — Italian is written in the HTML.
      English is produced AUTOMATICALLY by machine translation
@@ -120,7 +137,15 @@
     "contact.eyebrow": "Contact",
     "contact.phone": "Phone",
     "contact.cv.k": "Résumé",
-    "contact.cv.v": "Download CV (PDF)"
+    "contact.cv.v": "Download CV (PDF)",
+
+    "cform.eyebrow": "Get in touch",
+    "cform.name": "Name",
+    "cform.email": "Your email",
+    "cform.message": "Message",
+    "cform.submit": "Email me",
+
+    "footer.privacy": "Privacy policy"
   };
 
   var i18nEls = Array.prototype.slice.call(document.querySelectorAll("[data-i18n]"));
