@@ -253,6 +253,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ---------- Case studies — moving carousel ---------- */
 .carousel {
   overflow: hidden; width: 100%;
+  min-height: 180px; /* reserve space so the JS-built rows don't shift layout (CLS) */
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
@@ -280,10 +281,10 @@ a.carousel__item { text-decoration: none; color: inherit; }
 .carousel__item--link { cursor: pointer; }
 .carousel__item--link:hover { border-color: var(--accent); background: var(--surface-2); }
 .carousel__ext { margin-left: .35em; color: var(--accent-2); font-weight: 700; }
-.carousel__co { font-family: var(--font-head); font-weight: 600; font-size: .98rem; color: var(--text); }
+.carousel__co { font-family: var(--font-head); font-weight: 600; font-size: .98rem; color: var(--text); white-space: nowrap; }
 .carousel__area {
   display: block; margin-top: .2rem; font-size: .68rem; font-weight: 600;
-  letter-spacing: .05em; text-transform: uppercase; color: var(--accent-2);
+  letter-spacing: .05em; text-transform: uppercase; color: var(--accent-2); white-space: nowrap;
 }
 
 @media (prefers-reduced-motion: reduce) {
