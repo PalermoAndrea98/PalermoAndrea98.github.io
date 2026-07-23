@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"
+     aria-label="Un piccolo muletto entra, deposita un pallet e attorno compaiono linee di processo">
+  <style>
+    /* ---------- palette ---------- */
+    :root {
+      --line:   #47546e;
+      --grid:   #26304a;
+      --body:   #212b3f;
+      --body-2: #2a3550;
+      --edge:   #566482;
+      --metal:  #97a2b6;
+      --pallet: #4d5768;
+      --pallet-edge: #6c7788;
+      --box-a:  #626e86;
+      --box-b:  #515c72;
+      --box-c:  #3f5a63;
+      --teal:   #4fd1c5;
+      --sky:    #38bdf8;
+    }
+
+    /* ---------- timeline ----------
+       0.0–2.8s  forklift glides in and eases to a stop (wheels roll)
+       3.1–4.5s  fork carriage lowers the pallet to the floor (shadow fades in)
+       4.7s+     workflow lines fade in; dashes keep flowing (data), nodes pulse
+    -------------------------------------------------------------- */
+
+    .forklift { animation: enter 2.8s cubic-bezier(.16,.84,.44,1) both; }
+    @keyframes enter { from { transform: translateX(-400px); } to { transform: translateX(0); } }
+
+    .wheel { transform-box: fill-box; transform-origin: center;
+             animation: roll .9s linear 3 both; }
+    @keyframes roll { to { transform: rotate(360deg); } }
+
+    .carriage { animation: lower 1.4s cubic-bezier(.45,.05,.25,1) 3.1s both; }
+    @keyframes lower { from { transform: translateY(0); } to { transform: translateY(66px); } }
+
+    .shadow { opacity: 0; animation: shade 1.3s ease 3.35s both; }
+    @keyframes shade { to { opacity: .28; } }
+
+    .process { opacity: 0; animation: procIn 1.2s ease 4.6s both; }
+    @keyframes procIn { to { opacity: 1; } }
+
+    .flow { stroke-dasharray: 7 11; animation: dash 2.6s linear 4.6s infinite; }
+    @keyframes dash { to { stroke-dashoffset: -180; } }
+
+    .node { transform-box: fill-box; transform-origin: center; opacity: 0;
+            animation: pop .6s cubic-bezier(.34,1.56,.64,1) both; }
+    .node.n1 { animation-delay: 4.65s; }
+    .node.n2 { animation-delay: 4.80s; }
+    .node.n3 { animation-delay: 4.95s; }
+    .node.n4 { animation-delay: 5.10s; }
+    .node.n5 { animation-delay: 5.25s; }
+    .node.n6 { animation-delay: 5.40s; }
+    @keyframes pop { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: scale(1); } }
+
+    .ring { transform-box: fill-box; transform-origin: center; opacity: 0;
+            animation: ring 2.8s ease 5.5s infinite; }
+    @keyframes ring { 0% { transform: scale(.5); opacity: .55; } 70%,100% { transform: scale(1.9); opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .forklift, .wheel, .carriage, .shadow, .process, .flow, .node, .ring { animation: none; }
+      .carriage { transform: translateY(66px); }
+      .shadow { opacity: .28; }
+      .process, .node { opacity: 1; }
+    }
+  </style>
+
+  <!-- ===================== BACKGROUND ===================== -->
+  <g opacity=".4" stroke="var(--grid)" stroke-width="1">
+    <line x1="90" y1="214" x2="90" y2="322"/>
+    <line x1="180" y1="214" x2="180" y2="322"/>
+    <line x1="270" y1="214" x2="270" y2="322"/>
+    <line x1="360" y1="214" x2="360" y2="322"/>
+    <line x1="450" y1="214" x2="450" y2="322"/>
+    <line x1="540" y1="214" x2="540" y2="322"/>
+    <line x1="630" y1="214" x2="630" y2="322"/>
+    <line x1="40" y1="270" x2="680" y2="270" opacity=".6"/>
+  </g>
+  <line x1="40" y1="322" x2="680" y2="322" stroke="var(--line)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- landing shadow under the pallet -->
+  <ellipse class="shadow" cx="362" cy="326" rx="82" ry="7" fill="#000"/>
+
+  <!-- ===================== WORKFLOW / PROCESS ===================== -->
+  <!-- spans the full width: enters far left, arcs across and over the pallet, exits far right -->
+  <g class="process" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- main flow line, left → right -->
+    <polyline class="flow" points="46,258 140,212 250,254 330,204 400,204 470,254 580,210 674,258"
+              stroke="var(--teal)" stroke-width="2.2"/>
+    <!-- accent arc sweeping over the pallet -->
+    <path class="flow" d="M300 300 Q362 150 424 300" stroke="var(--sky)" stroke-width="1.8"/>
+
+    <!-- nodes, revealed left → right -->
+    <g class="node n1"><circle cx="46"  cy="258" r="6" fill="#0b0f17" stroke="var(--teal)" stroke-width="2.4"/></g>
+    <g class="node n2"><circle class="ring" cx="140" cy="212" r="11" fill="none" stroke="var(--teal)" stroke-width="1.6"/>
+      <circle cx="140" cy="212" r="6" fill="#0b0f17" stroke="var(--teal)" stroke-width="2.4"/></g>
+    <g class="node n3"><circle cx="330" cy="204" r="6" fill="#0b0f17" stroke="var(--teal)" stroke-width="2.4"/></g>
+    <g class="node n4"><circle class="ring" cx="400" cy="204" r="11" fill="none" stroke="var(--sky)" stroke-width="1.6"/>
+      <circle cx="400" cy="204" r="6" fill="#0b0f17" stroke="var(--sky)" stroke-width="2.4"/></g>
+    <g class="node n5"><circle cx="470" cy="254" r="6" fill="#0b0f17" stroke="var(--sky)" stroke-width="2.4"/></g>
+    <g class="node n6"><circle class="ring" cx="674" cy="258" r="11" fill="none" stroke="var(--sky)" stroke-width="1.6"/>
+      <circle cx="674" cy="258" r="6" fill="#0b0f17" stroke="var(--sky)" stroke-width="2.4"/></g>
+  </g>
+
+  <!-- ===================== FORKLIFT ===================== -->
+  <g class="forklift">
+    <!-- mast -->
+    <rect x="266" y="158" width="4" height="142" rx="2" fill="var(--metal)"/>
+    <rect x="276" y="158" width="4" height="142" rx="2" fill="var(--metal)"/>
+    <rect x="263" y="154" width="20" height="6" rx="2" fill="var(--metal)"/>
+
+    <!-- overhead guard -->
+    <rect x="160" y="146" width="100" height="8" rx="3" fill="var(--body-2)" stroke="var(--edge)" stroke-width="1.5"/>
+    <rect x="170" y="150" width="6" height="92" rx="3" fill="var(--edge)"/>
+    <rect x="248" y="150" width="6" height="92" rx="3" fill="var(--edge)"/>
+    <!-- seat back hint (no operator) -->
+    <rect x="198" y="206" width="9" height="36" rx="4" fill="var(--body-2)" stroke="var(--edge)" stroke-width="1.2"/>
+
+    <!-- body / counterweight -->
+    <rect x="140" y="238" width="122" height="50" rx="10" fill="var(--body)" stroke="var(--edge)" stroke-width="2"/>
+    <rect x="150" y="250" width="70" height="16" rx="4" fill="var(--body-2)"/>
+
+    <!-- wheels -->
+    <g class="wheel">
+      <circle cx="172" cy="298" r="22" fill="#171d2b" stroke="var(--edge)" stroke-width="3"/>
+      <circle cx="172" cy="298" r="8" fill="var(--metal)"/>
+      <line x1="172" y1="284" x2="172" y2="312" stroke="#0b0f17" stroke-width="2"/>
+      <line x1="158" y1="298" x2="186" y2="298" stroke="#0b0f17" stroke-width="2"/>
+    </g>
+    <g class="wheel">
+      <circle cx="246" cy="298" r="22" fill="#171d2b" stroke="var(--edge)" stroke-width="3"/>
+      <circle cx="246" cy="298" r="8" fill="var(--metal)"/>
+      <line x1="246" y1="284" x2="246" y2="312" stroke="#0b0f17" stroke-width="2"/>
+      <line x1="232" y1="298" x2="260" y2="298" stroke="#0b0f17" stroke-width="2"/>
+    </g>
+
+    <!-- carriage + forks + pallet + boxes (this group lowers) -->
+    <g class="carriage">
+      <!-- carriage plate + fork -->
+      <rect x="272" y="212" width="9" height="48" rx="2" fill="var(--metal)"/>
+      <rect x="279" y="214" width="8" height="44" rx="2" fill="var(--metal)"/>
+      <rect x="281" y="252" width="96" height="7" rx="2" fill="var(--metal)"/>
+
+      <!-- boxes -->
+      <rect x="300" y="196" width="58" height="36" rx="2" fill="var(--box-a)" stroke="#808ca4" stroke-width="1.4"/>
+      <rect x="362" y="186" width="60" height="46" rx="2" fill="var(--box-b)" stroke="#6f7a92" stroke-width="1.4"/>
+      <rect x="308" y="168" width="40" height="28" rx="2" fill="var(--box-c)" stroke="var(--teal)" stroke-width="1.4"/>
+      <!-- tape line on a box -->
+      <line x1="329" y1="196" x2="329" y2="232" stroke="#808ca4" stroke-width="1.2" opacity=".7"/>
+
+      <!-- pallet -->
+      <rect x="292" y="232" width="140" height="9" rx="1.5" fill="var(--pallet)" stroke="var(--pallet-edge)" stroke-width="1"/>
+      <rect x="296" y="241" width="14" height="9" fill="var(--pallet)" stroke="var(--pallet-edge)" stroke-width="1"/>
+      <rect x="355" y="241" width="14" height="9" fill="var(--pallet)" stroke="var(--pallet-edge)" stroke-width="1"/>
+      <rect x="414" y="241" width="14" height="9" fill="var(--pallet)" stroke="var(--pallet-edge)" stroke-width="1"/>
+      <rect x="292" y="250" width="140" height="6" rx="1.5" fill="var(--pallet)" stroke="var(--pallet-edge)" stroke-width="1"/>
+    </g>
+  </g>
+</svg>
